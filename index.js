@@ -12,6 +12,10 @@ runServer = async () => {
     server.use('/api/v1/portfolios', portfolioRoutes)
     server.use('/api/v1/blogs', blogRoutes)
 
+    server.use('/test', (re, res) => {
+        res.json({ "message": "Hello" })
+    })
+
     const PORT = parseInt(process.env.PORT, 10) || 3001
     server.listen(PORT, (err) => {
         if (err) console.log(err)
