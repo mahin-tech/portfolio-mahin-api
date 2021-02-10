@@ -12,8 +12,12 @@ runServer = async () => {
     server.use('/api/v1/portfolios', portfolioRoutes)
     server.use('/api/v1/blogs', blogRoutes)
 
-    server.use('/test', (re, res) => {
+    server.get('/test', (re, res) => {
         res.json({ "message": "Hello" })
+    })
+
+    server.get('', (req, res) => {
+        res.sendFile('index.html', { root: __dirname })
     })
 
     const PORT = parseInt(process.env.PORT, 10) || 3001
